@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from '../styles';
 import Image from 'next/image';
-import headshot from '../public/headshot.jpg';
+import headshot from '../public/headshot.png';
 const Hero = () => (
   <section className="container">
     <div className="bg-teal opacity-50"></div>
