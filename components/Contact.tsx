@@ -56,7 +56,7 @@ const Contact = () => {
 
   return (
     <section className={`${styles.paddings} relative z-10 `} id="contact">
-      <div className="absolute w-[50%] inset-0 gradient-03" />
+      <div className="absolute w-[50%] inset-0 gradient-03 -z-50" />
 
       <div className="flex justify-center flex-col items-center">
         <h1 className={`${styles.sectionHeader}`}>Contact Me</h1>
@@ -115,8 +115,8 @@ const Contact = () => {
               Send!
             </button>
           </form>
+</div>
         </div>
-      </div>
     </section>
   );
 };
