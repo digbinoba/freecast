@@ -1,7 +1,7 @@
 'use client';
 import styles from '../styles';
 import { ChangeEvent, useState } from 'react';
-import { sendResendEmail } from '@/app/api/send/route';
+//import { sendResendEmail } from '@/app/api/send/route';
 export interface emailFormData {
   email: string;
   message: string;
@@ -18,11 +18,17 @@ const Contact = () => {
     event.preventDefault();
 
     //Attempt to send the email
-    const response = await sendResendEmail(formData);
-
-    //On success
-    if (response?.success) {
-      //clear the form
+    await fetch('api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: formData.message,
+        email: formData.email,
+        subject: formData.subject,
+      }),
+    }).then(() => {
       alert('Email was sent!');
       setFormData((prevFormData) => ({
         ...prevFormData,
@@ -30,9 +36,15 @@ const Contact = () => {
         message: '',
         subject: '',
       }));
-    } else {
-      alert('sorry there was a problem sending an email')
-    }
+    });
+    //const response = await sendResendEmail(formData);
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      email: '',
+      message: '',
+      subject: '',
+    }));
+    //On success
   };
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>

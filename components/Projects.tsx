@@ -4,7 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import styles from '../styles';
 import client from '@/sanity/sanity.client';
 import { getProjects } from '@/sanity/sanity.query';
-import type { ProjectType } from '@/types';
+import { ProjectType } from './Card';
 import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { useState, useEffect } from 'react';
